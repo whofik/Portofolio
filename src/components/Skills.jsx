@@ -4,6 +4,7 @@ function Skills() {
   const skillData = [
     { name: 'JavaScript', percent: 30 },
     { name: 'Python', percent: 5 },
+    { name: 'Scraping Website', pedcent: 56 },
     { name: 'Vibe Code', percent: 100 },
     { name: 'Yapping', percent: 100 },
     { name: 'Turu', percent: 80 },
