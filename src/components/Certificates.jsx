@@ -5,42 +5,43 @@ function Certificates() {
   const [selectedCert, setSelectedCert] = useState(null)
 
   const certificates = [
-    {
-      id: 1,
-      src: 'https://img2.pixhost.to/images/6703/708086984_image.jpg',
-      alt: 'Sertifikat Webinar Nasional HIMATEK Muhammad Fikri',
-      name: 'Webinar Nasional HIMATEK',
-      date: 'Kamis, 26 Februari 2026',
-      issuer: 'HIMATEK',
-      description: 'kegiatan webinar nasional "Design Masterclass: Tips & Trik Desain yang Jarang Diketahui" yang diadakan oleh Himpunan Mahasiswa Teknologi Unversitas Slamet Riyadi pada tanggal 26 Februari 2026'
-    },
-    {
-      id: 2,
-      src: 'https://img2.pixhost.to/images/7163/714795221_file_1776136653778.jpg',
-      alt: 'Sertifikat Webinar Nasional urgensi Ushul Fiqih Di zaman sekarang CV. Metro Press indonesia',
-      name: 'Webinar Nasional Metro Press',
-      date: 'Senin, 13 April 2026',
-      issuer: 'CV. METRO PRESS INDONESIA',
-      description: 'Webinar Nasional Urgensi Ushul Fiqih di zaman sekarang'
-    {,
-      id: 3,
-      src: 'https://img2.pixhost.to/images/6703/708086870_image.jpg',
-      alt: 'Sertifikat Muhammad Fikri Webinar Idwebstalks Bikin Website Profesional Langsung dari cPanel',
-      name: 'Webinar Idwebstalks',
-      date: 'Jumat, 27 Februari 2026',
-      issuer: 'IDWebhost',
-      description: 'SitePad Unlocked: Bikin Website Profesional Langsung dari cPanel'
-    },
-    {
-      id: 4,
-      src: 'https://njy.my.id/files/4oh.jpg',
-      alt: 'Sertifikat Muhammad Fikri Webinar IDWebhost Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website',
-      name: 'Webinar Idwebstalks',
-      date: 'Kamis, 2 April 2026',
-      issuer: 'IDWebhost',
-      description: 'Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website'
-    },        
-  ]
+  {
+    id: 1,
+    src: 'https://img2.pixhost.to/images/6703/708086984_image.jpg',
+    alt: 'Sertifikat Webinar Nasional HIMATEK Muhammad Fikri',
+    name: 'Webinar Nasional HIMATEK',
+    date: 'Kamis, 26 Februari 2026',
+    issuer: 'HIMATEK',
+    description: 'kegiatan webinar nasional "Design Masterclass: Tips & Trik Desain yang Jarang Diketahui" yang diadakan oleh Himpunan Mahasiswa Teknologi Unversitas Slamet Riyadi pada tanggal 26 Februari 2026'
+  },
+  {
+    id: 2,
+    src: 'https://img2.pixhost.to/images/7163/714795221_file_1776136653778.jpg',
+    alt: 'Sertifikat Webinar Nasional urgensi Ushul Fiqih Di zaman sekarang CV. Metro Press indonesia',
+    name: 'Webinar Nasional Metro Press',
+    date: 'Senin, 13 April 2026',
+    issuer: 'CV. METRO PRESS INDONESIA',
+    description: 'Webinar Nasional Urgensi Ushul Fiqih di zaman sekarang'
+  },
+  {
+    id: 3,
+    src: 'https://img2.pixhost.to/images/6703/708086870_image.jpg',
+    alt: 'Sertifikat Muhammad Fikri Webinar Idwebstalks Bikin Website Profesional Langsung dari cPanel',
+    name: 'Webinar Idwebstalks',
+    date: 'Jumat, 27 Februari 2026',
+    issuer: 'IDWebhost',
+    description: 'SitePad Unlocked: Bikin Website Profesional Langsung dari cPanel'
+  },
+  {
+    id: 4,
+    src: 'https://njy.my.id/files/4oh.jpg',
+    alt: 'Sertifikat Muhammad Fikri Webinar IDWebhost Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website',
+    name: 'Webinar Idwebstalks',
+    date: 'Kamis, 2 April 2026',
+    issuer: 'IDWebhost',
+    description: 'Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website'
+  },
+]
 
   const openModal = (cert) => {
     setSelectedCert(cert)
