@@ -22,7 +22,7 @@ function Certificates() {
       date: 'Senin, 13 April 2026',
       issuer: 'CV. METRO PRESS INDONESIA',
       description: 'Webinar Nasional Urgensi Ushul Fiqih di zaman sekarang'
-    {
+    {,
       id: 3,
       src: 'https://img2.pixhost.to/images/6703/708086870_image.jpg',
       alt: 'Sertifikat Muhammad Fikri Webinar Idwebstalks Bikin Website Profesional Langsung dari cPanel',
