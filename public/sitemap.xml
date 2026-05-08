@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://muhammadfikri.web.id/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/src/assets/avatar.jpg</image:loc>
+      <image:title>Muhammad Fikri Portfolio</image:title>
+      <image:caption>Profile Muhammad Fikri - Pelajar Sekolah dan Web Developer</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://muhammadfikri.web.id/#about</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://muhammadfikri.web.id/#skills</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muhammadfikri.web.id/#certificates</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Himatek-Design-Masterclass-26-Februari-2026.jpg</image:loc>
+      <image:title>Sertifikat Webinar Nasional HIMATEK Muhammad Fikri</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Metro-Press-Generasi-Fragile-27-April-2026.jpg</image:loc>
+      <image:title>Sertifikat Webinar Nasional Metro Press Muhammad Fikri</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Metro-Press-Urgensi-Ushul-Fiqih-13-April-2026.jpg</image:loc>
+      <image:title>Sertifikat Webinar Nasional Metro Press Ushul Fiqih Muhammad Fikri</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Idwebhost-Bikin-Website-Profesional-27-Februari-2026.jpg</image:loc>
+      <image:title>Sertifikat Webinar Idwebstalks Muhammad Fikri</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Idwebhost-Standar-Interface-Website-02-April-2026.jpg</image:loc>
+      <image:title>Sertifikat Webinar IDWebhost Muhammad Fikri</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Metro-Press-Potensi-Nutraceutical-04-Mei-2026.png</image:loc>
+      <image:title>Sertifikat Webinar Nasional Potensi Nutraceutical CV. Metro Press Indonesia</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Idwebhost-Ai-Ads-Formula-30-April-2026.jpg</image:loc>
+      <image:title>Certificate of Appreciation IDwebhost AI Ads Formula</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://muhammadfikri.web.id/#projects</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://muhammadfikri.web.id/#music</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://muhammadfikri.web.id/#contact</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+</urlset>

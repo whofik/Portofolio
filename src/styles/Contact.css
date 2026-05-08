@@ -1,0 +1,106 @@
+.contact {
+  text-align: left;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.125rem 1.25rem;
+  background: #ffffff;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #111111;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 1px solid #eaeaea;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  transition: width 0.3s ease;
+  z-index: 0;
+}
+
+.contact-card:hover::before {
+  width: 100%;
+}
+
+.contact-card:hover {
+  transform: translateX(5px);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.contact-card.telegram:hover::before {
+  background: #0088cc;
+}
+
+.contact-card.instagram:hover::before {
+  background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+}
+
+.contact-card.whatsapp:hover::before {
+  background: #25d366;
+}
+
+.contact-icon-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.contact-card:hover .contact-icon-wrapper {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.contact-icon {
+  position: relative;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.contact-name {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 1rem 1.125rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-icon-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  .contact-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
