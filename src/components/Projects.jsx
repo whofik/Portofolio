@@ -1,62 +1,134 @@
 import { useState, useEffect, useMemo } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { 
+  buildrepodata, 
+  readgithubcache, 
+  writegithubcache, 
+  generatecontributiondata 
+} from '../utils/githubloader'
 import '../styles/Projects.css'
 
 const username = 'whofik'
 
-function generateContributionData() {
-  const weeks = 52
-  const daysPerWeek = 7
-  const data = []
-  const now = new Date()
-  const startDate = new Date(now.getFullYear(), 0, 1)
-
-  for (let w = 0; w < weeks; w++) {
-    const week = []
-    for (let d = 0; d < daysPerWeek; d++) {
-      const date = new Date(startDate)
-      date.setDate(startDate.getDate() + (w * 7) + d)
-      const isFuture = date > now
-      const level = isFuture ? -1 : Math.floor(Math.random() * 4)
-      week.push({ date, level })
-    }
-    data.push(week)
-  }
-  return data
-}
-
 function Projects() {
-  const [repos, setRepos] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [userData, setUserData] = useState(null)
-  const [stats, setStats] = useState({ totalRepos: 0, totalStars: 0, totalForks: 0 })
+  const [repos, setrepos] = useState([])
+  const [loading, setloading] = useState(true)
+  const [userdata, setuserdata] = useState(null)
+  const [stats, setstats] = useState({ totalrepos: 0, totalstars: 0, totalforks: 0 })
   
-  const contributionData = useMemo(() => generateContributionData(), [])
+  const contributiondata = useMemo(() => generatecontributiondata(), [])
+
+  const projectschema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://muhammadfikri.web.id/#projects",
+    "name": "Projects Muhammad Fikri",
+    "description": "Daftar project open source Muhammad Fikri di GitHub",
+    "url": "https://muhammadfikri.web.id/#projects",
+    "itemListElement": repos.map((repo, index) => ({
+      "@type": "SoftwareSourceCode",
+      "position": index + 1,
+      "name": repo.name,
+      "description": repo.description || "",
+      "url": repo.html_url,
+      "codeRepository": repo.html_url,
+      "programmingLanguage": repo.language || "",
+      "author": {
+        "@id": "https://muhammadfikri.web.id/#person"
+      }
+    }))
+  }
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/${username}`)
-      .then((res) => res.json())
-      .then((user) => setUserData(user))
-      .catch(() => setUserData(null))
+    let ismounted = true
+    const abortcontroller = new AbortController()
 
-    fetch(`https://api.github.com/users/${username}/repos?per_page=1000&sort=updated`)
-      .then((res) => res.json())
-      .then((data) => {
-        const filtered = data.filter((repo) => !repo.fork)
-        const sorted = filtered.sort((a, b) => (b.stargazers_count + b.forks_count) - (a.stargazers_count + a.forks_count))
-        const top3 = sorted.slice(0, 3)
-        setRepos(top3)
-        setStats({
-          totalRepos: filtered.length,
-          totalStars: filtered.reduce((sum, repo) => sum + repo.stargazers_count, 0),
-          totalForks: filtered.reduce((sum, repo) => sum + repo.forks_count, 0)
-        })
-        setLoading(false)
-      })
-      .catch(() => setLoading(false))
+    const cachedata = readgithubcache()
+    if (cachedata) {
+      const cacherepodata = buildrepodata(cachedata.repos)
+      setuserdata(cachedata.user)
+      setrepos(cacherepodata.repos)
+      setstats(cacherepodata.stats)
+      setloading(false)
+      if (cachedata.isfresh) {
+        return () => {
+          ismounted = false
+          abortcontroller.abort()
+        }
+      }
+    }
+
+    const timeoutid = setTimeout(() => {
+      abortcontroller.abort()
+    }, 7000)
+
+    const fetchgithubdata = async () => {
+      try {
+        const [userresponse, reporesponse] = await Promise.all([
+          fetch(`https://api.github.com/users/${username}`, {
+            signal: abortcontroller.signal,
+            headers: {
+              accept: 'application/vnd.github+json',
+            },
+          }),
+          fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, {
+            signal: abortcontroller.signal,
+            headers: {
+              accept: 'application/vnd.github+json',
+            },
+          }),
+        ])
+
+        if (!userresponse.ok || !reporesponse.ok) {
+          throw new Error('error')
+        }
+
+        const [userjson, repojson] = await Promise.all([userresponse.json(), reporesponse.json()])
+        if (!Array.isArray(repojson)) {
+          throw new Error('error')
+        }
+
+        const repodata = buildrepodata(repojson)
+
+        if (!ismounted) {
+          return
+        }
+
+        setuserdata(userjson)
+        setrepos(repodata.repos)
+        setstats(repodata.stats)
+        setloading(false)
+        writegithubcache(userjson, repojson)
+      } catch {
+        if (!ismounted) {
+          return
+        }
+
+        if (!cachedata) {
+          setuserdata(null)
+          setloading(false)
+        }
+      } finally {
+        clearTimeout(timeoutid)
+      }
+    }
+
+    fetchgithubdata()
+
+    return () => {
+      ismounted = false
+      abortcontroller.abort()
+      clearTimeout(timeoutid)
+    }
   }, [])
 
   return (
     <section id="projects" className="section projects">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(projectschema)}
+        </script>
+      </Helmet>
       <h2 className="section-title">Projects</h2>
 
       {loading ? (
@@ -67,10 +139,10 @@ function Projects() {
         <>
           <div className="projects-header">
             <div className="profile-info">
-              {userData && (
+              {userdata && (
                 <img
-                  src={userData.avatar_url}
-                  alt={userData.login}
+                  src={userdata.avatar_url}
+                  alt={userdata.login}
                   className="avatar"
                   width="48"
                   height="48"
@@ -79,14 +151,14 @@ function Projects() {
                 />
               )}
               <div className="profile-details">
-                <h3 className="profile-name">{userData?.name || userData?.login || username}</h3>
-                <p className="profile-bio">{userData?.bio || 'GitHub Developer'}</p>
+                <h3 className="profile-name">{userdata?.name || userdata?.login || username}</h3>
+                <p className="profile-bio">{userdata?.bio || 'GitHub Developer'}</p>
               </div>
             </div>
             <div className="contribution-graph">
               <div className="graph-container">
                 <div className="graph-grid">
-                  {contributionData.map((week, wi) => (
+                  {contributiondata.map((week, wi) => (
                     <div key={wi} className="graph-week">
                       {week.map((day, di) => (
                         <div
@@ -115,15 +187,15 @@ function Projects() {
 
           <div className="projects-stats">
             <div className="stat-card">
-              <span className="stat-number">{stats.totalRepos}</span>
+              <span className="stat-number">{stats.totalrepos}</span>
               <span className="stat-label">Projects</span>
             </div>
             <div className="stat-card">
-              <span className="stat-number">{stats.totalStars}</span>
+              <span className="stat-number">{stats.totalstars}</span>
               <span className="stat-label">Stars</span>
             </div>
             <div className="stat-card">
-              <span className="stat-number">{stats.totalForks}</span>
+              <span className="stat-number">{stats.totalforks}</span>
               <span className="stat-label">Forks</span>
             </div>
           </div>

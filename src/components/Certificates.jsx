@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 import '../styles/Certificates.css'
 
-const dataSertifikat = [
+const certificatedata = [
   {
     id: 1,
     src: '/sertifikat/Muhammad-Fikri-Himatek-Design-Masterclass-26-Februari-2026.jpg',
@@ -68,73 +69,81 @@ const dataSertifikat = [
 ]
 
 function Certificates() {
-  const [selectedCert, setSelectedCert] = useState(null)
+  const [selectedcertificate, setselectedcertificate] = useState(null)
 
-  const openModal = (cert) => {
-    const urlSertifikat = '#certificates' + cert.src.replace(/\.(jpg|jpeg|png)$/i, '')
-    window.history.pushState(null, '', urlSertifikat)
-    setSelectedCert(cert)
+  const certificatesschema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://muhammadfikri.web.id/#certificates",
+    "name": "Certificates Muhammad Fikri",
+    "description": "Daftar sertifikat penghargaan dan partisipasi Muhammad Fikri",
+    "url": "https://muhammadfikri.web.id/#certificates",
+    "itemListElement": certificatedata.map((cert, index) => ({
+      "@type": "EducationalOccupationalCredential",
+      "position": index + 1,
+      "name": cert.name,
+      "description": cert.description,
+      "image": `https://muhammadfikri.web.id${cert.src}`,
+      "credentialCategory": "Certificate",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": cert.issuer
+      }
+    }))
+  }
+
+  const openmodal = (certificate) => {
+    setselectedcertificate(certificate)
     document.body.style.overflow = 'hidden'
   }
 
-  const closeModal = () => {
-    window.history.pushState(null, '', window.location.pathname + window.location.search + '#certificates')
-    setSelectedCert(null)
+  const closemodal = () => {
+    setselectedcertificate(null)
     document.body.style.overflow = 'auto'
   }
 
   useEffect(() => {
-    const cekHashUrl = () => {
-      const hashSaatIni = window.location.hash
-      if (hashSaatIni.startsWith('#certificates/')) {
-        const pathSertifikat = hashSaatIni.replace('#certificates', '')
-        const sertifikatDitemukan = dataSertifikat.find(c => c.src.replace(/\.(jpg|jpeg|png)$/i, '') === pathSertifikat)
-        if (sertifikatDitemukan) {
-          setSelectedCert(sertifikatDitemukan)
-          document.body.style.overflow = 'hidden'
-        }
-      } else {
-        setSelectedCert(null)
-        document.body.style.overflow = 'auto'
-      }
+    return () => {
+      document.body.style.overflow = 'auto'
     }
-
-    cekHashUrl()
-    window.addEventListener('hashchange', cekHashUrl)
-    return () => window.removeEventListener('hashchange', cekHashUrl)
   }, [])
 
   useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === 'Escape' && selectedCert) {
-        closeModal()
+    const handleesc = (event) => {
+      if (event.key === 'Escape' && selectedcertificate) {
+        closemodal()
       }
     }
-    window.addEventListener('keydown', handleEsc)
-    return () => window.removeEventListener('keydown', handleEsc)
-  }, [selectedCert])
+    window.addEventListener('keydown', handleesc)
+    return () => window.removeEventListener('keydown', handleesc)
+  }, [selectedcertificate])
 
   return (
     <section id="certificates" className="section certificates">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(certificatesschema)}
+        </script>
+      </Helmet>
       <h2 className="section-title">Certificates</h2>
       <div className="certificates-grid">
-        {dataSertifikat.map((cert) => (
+        {certificatedata.map((certificate) => (
           <div
-            key={cert.id}
+            key={certificate.id}
             className="certificate-item"
-            onClick={() => openModal(cert)}
+            onClick={() => openmodal(certificate)}
             role="button"
-            aria-label={`View certificate for ${cert.name}`}
+            aria-label={`View certificate for ${certificate.name}`}
             tabIndex="0"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                openModal(cert)
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                openmodal(certificate)
               }
             }}
           >
             <img
-              src={cert.src}
-              alt={cert.alt}
+              src={certificate.src}
+              alt={certificate.alt}
               className="certificate-img"
               width="320"
               height="200"
@@ -151,24 +160,24 @@ function Certificates() {
         ))}
       </div>
 
-      {selectedCert && (
-        <div className="modal-overlay" onClick={closeModal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal} aria-label="Close modal">
+      {selectedcertificate && (
+        <div className="modal-overlay" onClick={closemodal} role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <div className="modal-content" onClick={(event) => event.stopPropagation()}>
+            <button className="modal-close" onClick={closemodal} aria-label="Close modal">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style={{ pointerEvents: 'none' }}>
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
               </svg>
             </button>
             <div className="modal-header">
               <img
-                src={selectedCert.src}
-                alt={selectedCert.alt}
+                src={selectedcertificate.src}
+                alt={selectedcertificate.alt}
                 className="modal-thumbnail"
                 width="520"
                 height="280"
               />
               <div className="modal-header-info">
-                <h3 className="modal-title" id="modal-title">{selectedCert.name}</h3>
+                <h3 className="modal-title" id="modal-title">{selectedcertificate.name}</h3>
               </div>
             </div>
             <div className="modal-body">
@@ -181,7 +190,7 @@ function Certificates() {
                   </div>
                   <div className="meta-content">
                     <span className="meta-label">Tanggal</span>
-                    <span className="meta-value">{selectedCert.date}</span>
+                    <span className="meta-value">{selectedcertificate.date}</span>
                   </div>
                 </div>
                 <div className="meta-item">
@@ -192,12 +201,12 @@ function Certificates() {
                   </div>
                   <div className="meta-content">
                     <span className="meta-label">Diterbitkan oleh</span>
-                    <span className="meta-value">{selectedCert.issuer}</span>
+                    <span className="meta-value">{selectedcertificate.issuer}</span>
                   </div>
                 </div>
               </div>
               <div className="modal-description-wrapper">
-                <p className="modal-description">{selectedCert.description}</p>
+                <p className="modal-description">{selectedcertificate.description}</p>
               </div>
             </div>
           </div>

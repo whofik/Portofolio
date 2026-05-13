@@ -1,35 +1,35 @@
 import { Helmet } from 'react-helmet-async'
 
 function SEO({ title, description, image, url }) {
-  const siteTitle = title || 'Muhammad Fikri - Portfolio | Pelajar Sekolah & Web Developer'
-  const siteDescription = description || 'Muhammad Fikri Portfolio - Pelajar Sekolah Indonesia yang tertarik di bidang IT dan Web Development. Portfolio resmi Muhammad Fikri dengan skills JavaScript, Python, React, dan berbagai project open source di GitHub.'
-  const siteImage = image || '/src/assets/avatar.jpg'
-  const siteUrl = url || 'https://muhammadfikri.web.id'
+  const sitetitle = title || 'Muhammad Fikri - Portfolio | Pelajar Sekolah & Web Developer'
+  const sitedescription = description || 'Muhammad Fikri Portfolio - Pelajar Sekolah Indonesia yang tertarik di bidang IT dan Web Development. Menampilkan skills JavaScript, Python, React, dan berbagai project open source di GitHub.'
+  const siteimage = image || 'https://img2.pixhost.to/images/6703/708085391_image.jpg'
+  const siteurl = url || 'https://muhammadfikri.web.id'
 
   return (
     <Helmet>
-      <title>{siteTitle}</title>
-      <meta name="description" content={siteDescription} />
-      <meta name="keywords" content="Muhammad Fikri, Muhammad Fikri Portfolio, Muhammad Fikri Pelajar, Muhammad Fikri Pelajar Sekolah, Muhammad Fikri Web Developer, Portfolio Muhammad Fikri, Fikri Portfolio, Fikri Developer, Web Developer Indonesia, Pelajar IT, Programmer Pemula, JavaScript, Python, React, Frontend Developer, Siswa IT Indonesia, Belajar Coding, Portfolio Pelajar, GitHub Developer Indonesia, Muhammad Fikri GitHub, Muhammad Fikri Programmer" />
+      <title>{sitetitle}</title>
+      <meta name="description" content={sitedescription} />
+      <meta name="keywords" content="Muhammad Fikri Portfolio, Muhammad Fikri Pelajar, Muhammad Fikri Pelajar Sekolah, Muhammad Fikri Web Developer, Portfolio Muhammad Fikri, Fikri Portfolio, Fikri Developer, Web Developer Indonesia, Pelajar IT, Programmer Pemula, JavaScript, Python, React, Frontend Developer, Siswa IT Indonesia, Belajar Coding, Portfolio Pelajar, GitHub Developer Indonesia, Muhammad Fikri GitHub, Muhammad Fikri Programmer" />
       <meta name="author" content="Muhammad Fikri" />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="googlebot" content="index, follow" />
-      <link rel="canonical" href={siteUrl} />
-      <link rel="alternate" hrefLang="id" href={siteUrl} />
-      <link rel="alternate" hrefLang="en" href={siteUrl} />
-      <link rel="alternate" hrefLang="x-default" href={siteUrl} />
+      <link rel="canonical" href={siteurl} />
+      <link rel="alternate" hrefLang="id" href={siteurl} />
+      <link rel="alternate" hrefLang="en" href={siteurl} />
+      <link rel="alternate" hrefLang="x-default" href={siteurl} />
 
       <meta name="topic" content="Portfolio, Web Development, Programming" />
-      <meta name="summary" content={siteDescription} />
+      <meta name="summary" content={sitedescription} />
       <meta name="category" content="Portfolio, Personal Website, Web Developer" />
       <meta name="coverage" content="Worldwide" />
       <meta name="target" content="all" />
 
       <meta property="og:type" content="profile" />
-      <meta property="og:url" content={siteUrl} />
-      <meta property="og:title" content={siteTitle} />
-      <meta property="og:description" content={siteDescription} />
-      <meta property="og:image" content={siteImage} />
+      <meta property="og:url" content={siteurl} />
+      <meta property="og:title" content={sitetitle} />
+      <meta property="og:description" content={sitedescription} />
+      <meta property="og:image" content={siteimage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Muhammad Fikri Portfolio" />
@@ -40,10 +40,10 @@ function SEO({ title, description, image, url }) {
       <meta property="profile:username" content="whofik" />
 
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={siteUrl} />
-      <meta property="twitter:title" content={siteTitle} />
-      <meta property="twitter:description" content={siteDescription} />
-      <meta property="twitter:image" content={siteImage} />
+      <meta property="twitter:url" content={siteurl} />
+      <meta property="twitter:title" content={sitetitle} />
+      <meta property="twitter:description" content={sitedescription} />
+      <meta property="twitter:image" content={siteimage} />
       <meta property="twitter:image:alt" content="Muhammad Fikri Portfolio" />
       <meta property="twitter:creator" content="@fmds_whps" />
       <meta property="twitter:site" content="@fmds_whps" />

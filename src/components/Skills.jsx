@@ -1,7 +1,7 @@
 import '../styles/Skills.css'
 
 function Skills() {
-  const skillData = [
+  const skilldata = [
     { name: 'JavaScript', percent: 30 },
     { name: 'Python', percent: 5 },
     { name: 'Scraping Website', percent: 56 },
@@ -15,7 +15,7 @@ function Skills() {
       <h2 className="section-title">My Skills</h2>
       <div className="skills-container">
         <div className="skills-grid">
-          {skillData.slice(0, 3).map((skill) => (
+          {skilldata.slice(0, 3).map((skill) => (
             <div key={skill.name} className="skill-item">
               <span className="skill-name">{skill.name}</span>
               <div className="progress-bar">
@@ -26,7 +26,7 @@ function Skills() {
           ))}
         </div>
         <div className="skills-grid">
-          {skillData.slice(3).map((skill) => (
+          {skilldata.slice(3).map((skill) => (
             <div key={skill.name} className="skill-item">
               <span className="skill-name">{skill.name}</span>
               <div className="progress-bar">
