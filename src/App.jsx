@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import Header from './components/Header'
 import About from './components/About'
+import Location from './components/Location'
 import Skills from './components/Skills'
 import ErrorBoundary from './components/ErrorBoundary'
 import SEO from './components/SEO'
@@ -21,6 +22,9 @@ function App() {
         <main className="main">
           <ErrorBoundary>
             <About />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <Location />
           </ErrorBoundary>
           <ErrorBoundary>
             <Skills />
