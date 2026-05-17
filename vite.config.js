@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import * as settings from './src/constants/settings.js'
 
 const htmlPlugin = () => {
@@ -35,7 +36,16 @@ const htmlPlugin = () => {
 }
 
 export default defineConfig({
-  plugins: [react(), htmlPlugin()],
+  plugins: [
+    react(), 
+    htmlPlugin(),
+    ViteImageOptimizer({
+      jpg: { quality: 80 },
+      jpeg: { quality: 80 },
+      png: { quality: 80 },
+      webp: { quality: 80 },
+    })
+  ],
   define: {
     __BUILD_DATE__: JSON.stringify(new Date().toISOString().split('T')[0]),
   },
