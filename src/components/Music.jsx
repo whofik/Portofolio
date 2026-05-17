@@ -1,4 +1,5 @@
 import '../styles/Music.css'
+import { author } from '../constants/settings'
 
 function Music() {
   return (
@@ -7,7 +8,7 @@ function Music() {
       <div className="spotify-card">
         <iframe
           src="https://open.spotify.com/embed/playlist/1UeW9ClutFrzvBAXhJw2Nv?si=d44VGpEfS1ig_qrsnbk_7A&pi=D1_654NNSSKrw"
-          title="Muhammad Fikri Spotify Music Playlist"
+          title={`${author.fullName} Spotify Music Playlist`}
           frameBorder="0"
           allow="encrypted-media"
           loading="lazy"

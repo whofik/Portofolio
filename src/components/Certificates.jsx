@@ -1,72 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { siteUrl, certificateData, author } from '../constants/settings'
 import '../styles/Certificates.css'
-
-const certificatedata = [
-  {
-    id: 1,
-    src: '/sertifikat/Muhammad-Fikri-Himatek-Design-Masterclass-26-Februari-2026.jpg',
-    alt: 'Sertifikat Webinar Nasional HIMATEK Muhammad Fikri',
-    name: 'Webinar Nasional HIMATEK',
-    date: 'Kamis, 26 Februari 2026',
-    issuer: 'HIMATEK',
-    description: 'kegiatan webinar nasional "Design Masterclass: Tips & Trik Desain yang Jarang Diketahui" yang diadakan oleh Himpunan Mahasiswa Teknologi Unversitas Slamet Riyadi pada tanggal 26 Februari 2026'
-  },
-  {
-    id: 2,
-    src: '/sertifikat/Muhammad-Fikri-Metro-Press-Generasi-Fragile-27-April-2026.jpg',
-    alt: 'Sertifikat Webinar Nasional Generasi Fragile dalam Perspektif Pendidikan: Tantangan & Strategi Penguatan Resiliensi CV. Metro Press indonesia',
-    name: 'Webinar Nasional Metro Press',
-    date: 'Senin, 27 April 2026',
-    issuer: 'CV. METRO PRESS INDONESIA',
-    description: 'Generasi Fragile dalam Perspektif Pendidikan: Tantangan & Strategi Penguatan Resiliensi'
-  },
-  {
-    id: 3,
-    src: '/sertifikat/Muhammad-Fikri-Metro-Press-Urgensi-Ushul-Fiqih-13-April-2026.jpg',
-    alt: 'Sertifikat Webinar Nasional urgensi Ushul Fiqih Di zaman sekarang CV. Metro Press indonesia',
-    name: 'Webinar Nasional Metro Press',
-    date: 'Senin, 13 April 2026',
-    issuer: 'CV. METRO PRESS INDONESIA',
-    description: 'Webinar Nasional Urgensi Ushul Fiqih di zaman sekarang'
-  },
-  {
-    id: 4,
-    src: '/sertifikat/Muhammad-Fikri-Idwebhost-Bikin-Website-Profesional-27-Februari-2026.jpg',
-    alt: 'Sertifikat Muhammad Fikri Webinar Idwebstalks Bikin Website Profesional Langsung dari cPanel',
-    name: 'Webinar Idwebstalks',
-    date: 'Jumat, 27 Februari 2026',
-    issuer: 'IDWebhost',
-    description: 'SitePad Unlocked: Bikin Website Profesional Langsung dari cPanel'
-  },
-  {
-    id: 5,
-    src: '/sertifikat/Muhammad-Fikri-Idwebhost-Standar-Interface-Website-02-April-2026.jpg',
-    alt: 'Sertifikat Muhammad Fikri Webinar IDWebhost Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website',
-    name: 'Webinar Idwebstalks',
-    date: 'Kamis, 2 April 2026',
-    issuer: 'IDWebhost',
-    description: 'Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website'
-  },
-  {
-    id: 6,
-    src: '/sertifikat/Muhammad-Fikri-Metro-Press-Potensi-Nutraceutical-04-Mei-2026.png',
-    alt: 'Sertifikat Webinar Nasional Potensi Nutraceutical CV. Metro Press Indonesia',
-    name: 'Webinar Nasional Metro Press',
-    date: 'Senin, 04 Mei 2026',
-    issuer: 'CV. METRO PRESS INDONESIA',
-    description: 'Webinar Nasional: Potensi Nutraceutical Berbasis Tanaman Obat Indonesia dalam Manajemen Pencegahan Diabetes Melitus & Infark Miokard'
-  },
-  {
-    id: 7,
-    src: '/sertifikat/Muhammad-Fikri-Idwebhost-Ai-Ads-Formula-30-April-2026.jpg',
-    alt: 'Certificate of Appreciation IDwebhost AI Ads Formula',
-    name: 'Webinar Idwebtalks',
-    date: 'Kamis, 30 April 2026',
-    issuer: 'IDwebhost',
-    description: 'AI Ads Formula: Optimasi Meta Ads Biar Lebih Profit'
-  }
-]
 
 function Certificates() {
   const [selectedcertificate, setselectedcertificate] = useState(null)
@@ -74,16 +9,16 @@ function Certificates() {
   const certificatesschema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "@id": "https://muhammadfikri.web.id/#certificates",
-    "name": "Certificates Muhammad Fikri",
-    "description": "Daftar sertifikat penghargaan dan partisipasi Muhammad Fikri",
-    "url": "https://muhammadfikri.web.id/#certificates",
-    "itemListElement": certificatedata.map((cert, index) => ({
+    "@id": `${siteUrl}/#certificates`,
+    "name": `Certificates ${author.fullName}`,
+    "description": `Daftar sertifikat penghargaan dan partisipasi ${author.fullName}`,
+    "url": `${siteUrl}/#certificates`,
+    "itemListElement": certificateData.map((cert, index) => ({
       "@type": "EducationalOccupationalCredential",
       "position": index + 1,
       "name": cert.name,
       "description": cert.description,
-      "image": `https://muhammadfikri.web.id${cert.src}`,
+      "image": `${siteUrl}${cert.src}`,
       "credentialCategory": "Certificate",
       "recognizedBy": {
         "@type": "Organization",
@@ -94,19 +29,18 @@ function Certificates() {
 
   const openmodal = (certificate) => {
     setselectedcertificate(certificate)
-    document.body.style.overflow = 'hidden'
   }
 
   const closemodal = () => {
     setselectedcertificate(null)
-    document.body.style.overflow = 'auto'
   }
 
   useEffect(() => {
+    document.body.style.overflow = selectedcertificate ? 'hidden' : 'auto'
     return () => {
       document.body.style.overflow = 'auto'
     }
-  }, [])
+  }, [selectedcertificate])
 
   useEffect(() => {
     const handleesc = (event) => {
@@ -127,7 +61,7 @@ function Certificates() {
       </Helmet>
       <h2 className="section-title">Certificates</h2>
       <div className="certificates-grid">
-        {certificatedata.map((certificate) => (
+        {certificateData.map((certificate) => (
           <div
             key={certificate.id}
             className="certificate-item"

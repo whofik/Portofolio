@@ -1,6 +1,23 @@
+/**
+ * GitHub data utilities for the Projects section.
+ * Handles API caching in localStorage, contribution graph generation,
+ * and repository data transformation.
+ */
+
+/** @type {string} localStorage key for GitHub API cache */
 const githubcachekey = 'YahahaHayuuuuu'
+
+/** @type {number} Cache TTL: 15 minutes in milliseconds */
 const githubcacheage = 1000 * 60 * 15
 
+/**
+ * Generate a deterministic "contribution level" for a given date.
+ * Used to render the contribution graph without hitting the GitHub GraphQL API.
+ *
+ * @param {Date} date - The date to calculate a level for
+ * @param {Date} now - The current date (dates after this return -1)
+ * @returns {number} Level from -1 (future) to 4 (highest activity)
+ */
 export function getcontributionlevel(date, now) {
   if (date > now) {
     return -1
@@ -14,6 +31,15 @@ export function getcontributionlevel(date, now) {
   return 4
 }
 
+/**
+ * Filter, sort, and compute stats from a raw list of GitHub repos.
+ * - Filters out forks
+ * - Sorts by (stars + forks) descending
+ * - Returns top 3 repos and aggregate stats
+ *
+ * @param {Array<object>} repolist - Raw repo objects from the GitHub API
+ * @returns {{ repos: Array<object>, stats: { totalrepos: number, totalstars: number, totalforks: number } }}
+ */
 export function buildrepodata(repolist) {
   const filtered = repolist.filter((repo) => !repo.fork)
   const sorted = filtered
@@ -29,6 +55,13 @@ export function buildrepodata(repolist) {
   }
 }
 
+/**
+ * Read cached GitHub data from localStorage.
+ *
+ * @returns {{ isfresh: boolean, repos: Array<object>, user: object } | null}
+ *   Returns null if cache is missing or malformed.
+ *   `isfresh` is true if the cache is within the TTL window.
+ */
 export function readgithubcache() {
   try {
     const rawcache = localStorage.getItem(githubcachekey)
@@ -40,12 +73,24 @@ export function readgithubcache() {
   } catch { return null }
 }
 
+/**
+ * Write GitHub data to localStorage cache with a timestamp.
+ *
+ * @param {object} user - GitHub user profile object
+ * @param {Array<object>} repos - Array of GitHub repo objects
+ */
 export function writegithubcache(user, repos) {
   try {
     localStorage.setItem(githubcachekey, JSON.stringify({ time: Date.now(), user, repos }))
   } catch { return }
 }
 
+/**
+ * Generate 52 weeks × 7 days of contribution data for the graph.
+ * Each day has a deterministic level based on its date.
+ *
+ * @returns {Array<Array<{ date: Date, level: number }>>} 52 arrays of 7 day objects
+ */
 export function generatecontributiondata() {
   const weeks = 52
   const daysperweek = 7
@@ -63,4 +108,24 @@ export function generatecontributiondata() {
     data.push(week)
   }
   return data
+}
+
+/**
+ * Fetch data from a URL with a single retry on failure.
+ * Uses exponential backoff (1s delay before retry).
+ *
+ * @param {string} fetchurl - URL to fetch
+ * @param {object} options - fetch options (signal, headers, etc.)
+ * @returns {Promise<Response>}
+ */
+export async function fetchWithRetry(fetchurl, options = {}) {
+  try {
+    const response = await fetch(fetchurl, options)
+    if (response.ok) return response
+    throw new Error(`HTTP ${response.status}`)
+  } catch (error) {
+    if (options.signal?.aborted) throw error
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    return fetch(fetchurl, options)
+  }
 }

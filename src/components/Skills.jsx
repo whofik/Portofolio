@@ -1,21 +1,34 @@
+import { Helmet } from 'react-helmet-async'
+import { skillData, siteUrl, author } from '../constants/settings'
 import '../styles/Skills.css'
 
 function Skills() {
-  const skilldata = [
-    { name: 'JavaScript', percent: 30 },
-    { name: 'Python', percent: 5 },
-    { name: 'Scraping Website', percent: 56 },
-    { name: 'Vibe Code', percent: 100 },
-    { name: 'Yapping', percent: 100 },
-    { name: 'Turu', percent: 80 },
-  ]
+  const skillsSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${siteUrl}/#skills`,
+    "name": `Skills ${author.fullName}`,
+    "description": `Daftar keahlian dan bahasa pemrograman yang dikuasai ${author.fullName}`,
+    "url": `${siteUrl}/#skills`,
+    "itemListElement": skillData.map((skill, index) => ({
+      "@type": "DefinedTerm",
+      "position": index + 1,
+      "name": skill.name,
+      "termCode": skill.name
+    }))
+  }
 
   return (
     <section id="skills" className="section skills">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(skillsSchema)}
+        </script>
+      </Helmet>
       <h2 className="section-title">My Skills</h2>
       <div className="skills-container">
         <div className="skills-grid">
-          {skilldata.slice(0, 3).map((skill) => (
+          {skillData.slice(0, 3).map((skill) => (
             <div key={skill.name} className="skill-item">
               <span className="skill-name">{skill.name}</span>
               <div className="progress-bar">
@@ -26,7 +39,7 @@ function Skills() {
           ))}
         </div>
         <div className="skills-grid">
-          {skilldata.slice(3).map((skill) => (
+          {skillData.slice(3).map((skill) => (
             <div key={skill.name} className="skill-item">
               <span className="skill-name">{skill.name}</span>
               <div className="progress-bar">

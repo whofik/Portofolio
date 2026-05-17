@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import '../styles/Header.css'
+import { author } from '../constants/settings'
 
 function Header() {
   const [menuopen, setmenuopen] = useState(false)
@@ -29,7 +30,7 @@ function Header() {
       <div className="header-inner">
         <div className="brand">
           <span className="brand-title">Portofolio</span>
-          <span className="brand-subtitle">Muhammad Fikri</span>
+          <span className="brand-subtitle">{author.fullName}</span>
         </div>
         <button
           className={`menu-toggle ${menuopen ? 'menu-open' : ''}`}

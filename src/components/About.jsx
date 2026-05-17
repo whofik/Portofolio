@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/About.css'
 import avatarimg from '../assets/avatar.jpg'
+import { author } from '../constants/settings'
 
 function About() {
   const quote = "It always seems impossible until it's done"
@@ -22,7 +23,7 @@ function About() {
       <div className="profile-container">
         <img
           src={avatarimg}
-          alt="Muhammad Fikri - Pelajar & Web Developer"
+          alt={`${author.fullName} - ${author.jobTitle} & Web Developer`}
           className="avatar"
           width="140"
           height="140"
@@ -31,8 +32,8 @@ function About() {
           fetchPriority="high"
         />
       </div>
-      <h1 className="name">Muhammad Fikri</h1>
-      <p className="status">Pelajar Sekolah</p>
+      <h1 className="name">{author.fullName}</h1>
+      <p className="status">{author.jobTitle}</p>
       <p className="bio" aria-live="polite">
         <span className="typing-text">{displayedtext}</span>
         <span className="cursor"></span>

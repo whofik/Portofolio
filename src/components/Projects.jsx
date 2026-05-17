@@ -1,14 +1,16 @@
 import { useState, useEffect, useMemo } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { siteUrl, githubUsername, author } from '../constants/settings'
 import { 
   buildrepodata, 
   readgithubcache, 
   writegithubcache, 
-  generatecontributiondata 
+  generatecontributiondata,
+  fetchWithRetry
 } from '../utils/githubloader'
 import '../styles/Projects.css'
 
-const username = 'whofik'
+const username = githubUsername
 
 function Projects() {
   const [repos, setrepos] = useState([])
@@ -21,10 +23,10 @@ function Projects() {
   const projectschema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "@id": "https://muhammadfikri.web.id/#projects",
-    "name": "Projects Muhammad Fikri",
-    "description": "Daftar project open source Muhammad Fikri di GitHub",
-    "url": "https://muhammadfikri.web.id/#projects",
+    "@id": `${siteUrl}/#projects`,
+    "name": `Projects ${author.fullName}`,
+    "description": `Daftar project open source ${author.fullName} di GitHub`,
+    "url": `${siteUrl}/#projects`,
     "itemListElement": repos.map((repo, index) => ({
       "@type": "SoftwareSourceCode",
       "position": index + 1,
@@ -34,7 +36,7 @@ function Projects() {
       "codeRepository": repo.html_url,
       "programmingLanguage": repo.language || "",
       "author": {
-        "@id": "https://muhammadfikri.web.id/#person"
+        "@id": `${siteUrl}/#person`
       }
     }))
   }
@@ -46,6 +48,7 @@ function Projects() {
     const cachedata = readgithubcache()
     if (cachedata) {
       const cacherepodata = buildrepodata(cachedata.repos)
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setuserdata(cachedata.user)
       setrepos(cacherepodata.repos)
       setstats(cacherepodata.stats)
@@ -65,13 +68,13 @@ function Projects() {
     const fetchgithubdata = async () => {
       try {
         const [userresponse, reporesponse] = await Promise.all([
-          fetch(`https://api.github.com/users/${username}`, {
+          fetchWithRetry(`https://api.github.com/users/${username}`, {
             signal: abortcontroller.signal,
             headers: {
               accept: 'application/vnd.github+json',
             },
           }),
-          fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, {
+          fetchWithRetry(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`, {
             signal: abortcontroller.signal,
             headers: {
               accept: 'application/vnd.github+json',
