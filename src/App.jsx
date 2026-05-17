@@ -24,10 +24,10 @@ function App() {
             <About />
           </ErrorBoundary>
           <ErrorBoundary>
-            <Location />
+            <Skills />
           </ErrorBoundary>
           <ErrorBoundary>
-            <Skills />
+            <Location />
           </ErrorBoundary>
           <Suspense fallback={null}>
             <ErrorBoundary>
