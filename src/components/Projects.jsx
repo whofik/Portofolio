@@ -144,7 +144,7 @@ function Projects() {
             <div className="profile-info">
               {userdata && (
                 <img
-                  src={userdata.avatar_url}
+                  src={userdata.avatar_url + (userdata.avatar_url.includes('?') ? '&s=96' : '?s=96')}
                   alt={userdata.login}
                   className="avatar"
                   width="48"
