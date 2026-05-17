@@ -61,6 +61,14 @@ function Header() {
             Skills
           </a>
           <a
+            href="#location"
+            className={activelink === 'location' ? 'active' : ''}
+            onClick={() => handlenavclick('location')}
+            aria-label="Location section"
+          >
+            Location
+          </a>
+          <a
             href="#certificates"
             className={activelink === 'certificates' ? 'active' : ''}
             onClick={() => handlenavclick('certificates')}

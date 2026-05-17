@@ -12,6 +12,7 @@ describe('Header', () => {
     render(<Header />)
     expect(screen.getByText('About')).toBeInTheDocument()
     expect(screen.getByText('Skills')).toBeInTheDocument()
+    expect(screen.getByText('Location')).toBeInTheDocument()
     expect(screen.getByText('Certificates')).toBeInTheDocument()
     expect(screen.getByText('Projects')).toBeInTheDocument()
     expect(screen.getByText('Music')).toBeInTheDocument()
