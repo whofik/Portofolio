@@ -47,33 +47,24 @@ export const skillData = [
 export const certificateData = [
   {
     id: 1,
-    src: '/sertifikat/Muhammad-Fikri-Himatek-Design-Masterclass-26-Februari-2026.jpg',
-    alt: 'Sertifikat Webinar Nasional HIMATEK Muhammad Fikri',
-    name: 'Webinar Nasional HIMATEK',
-    date: 'Kamis, 26 Februari 2026',
-    issuer: 'HIMATEK',
-    description: 'kegiatan webinar nasional "Design Masterclass: Tips & Trik Desain yang Jarang Diketahui" yang diadakan oleh Himpunan Mahasiswa Teknologi Unversitas Slamet Riyadi pada tanggal 26 Februari 2026'
+    src: '/sertifikat/Muhammad-Fikri-Idwebhost-Ai-Ads-Formula-30-April-2026.jpg',
+    alt: 'Certificate of Appreciation IDwebhost AI Ads Formula',
+    name: 'Webinar Idwebtalks',
+    date: 'Kamis, 30 April 2026',
+    issuer: 'IDwebhost',
+    description: 'AI Ads Formula: Optimasi Meta Ads Biar Lebih Profit'
   },
   {
     id: 2,
-    src: '/sertifikat/Muhammad-Fikri-Metro-Press-Generasi-Fragile-27-April-2026.jpg',
-    alt: 'Sertifikat Webinar Nasional Generasi Fragile dalam Perspektif Pendidikan: Tantangan & Strategi Penguatan Resiliensi CV. Metro Press indonesia',
-    name: 'Webinar Nasional Metro Press',
-    date: 'Senin, 27 April 2026',
-    issuer: 'CV. METRO PRESS INDONESIA',
-    description: 'Generasi Fragile dalam Perspektif Pendidikan: Tantangan & Strategi Penguatan Resiliensi'
+    src: '/sertifikat/Muhammad-Fikri-Idwebhost-Standar-Interface-Website-02-April-2026.jpg',
+    alt: 'Sertifikat Muhammad Fikri Webinar IDWebhost Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website',
+    name: 'Webinar Idwebstalks',
+    date: 'Kamis, 2 April 2026',
+    issuer: 'IDWebhost',
+    description: 'Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website'
   },
   {
     id: 3,
-    src: '/sertifikat/Muhammad-Fikri-Metro-Press-Urgensi-Ushul-Fiqih-13-April-2026.jpg',
-    alt: 'Sertifikat Webinar Nasional urgensi Ushul Fiqih Di zaman sekarang CV. Metro Press indonesia',
-    name: 'Webinar Nasional Metro Press',
-    date: 'Senin, 13 April 2026',
-    issuer: 'CV. METRO PRESS INDONESIA',
-    description: 'Webinar Nasional Urgensi Ushul Fiqih di zaman sekarang'
-  },
-  {
-    id: 4,
     src: '/sertifikat/Muhammad-Fikri-Idwebhost-Bikin-Website-Profesional-27-Februari-2026.jpg',
     alt: 'Sertifikat Muhammad Fikri Webinar Idwebstalks Bikin Website Profesional Langsung dari cPanel',
     name: 'Webinar Idwebstalks',
@@ -82,13 +73,22 @@ export const certificateData = [
     description: 'SitePad Unlocked: Bikin Website Profesional Langsung dari cPanel'
   },
   {
+    id: 4,
+    src: '/sertifikat/Muhammad-Fikri-Metro-Press-Humanizing-Technology-11-Mei-2026.png',
+    alt: 'Sertifikat Webinar Nasional Humanizing Technology in Education CV. Metro Press Indonesia',
+    name: 'Webinar Nasional Metro Press',
+    date: 'Senin, 11 Mei 2026',
+    issuer: 'CV. METRO PRESS INDONESIA',
+    description: 'Webinar Nasional: Humanizing Technology in Education: Menjaga Nilai Kemanusiaan di Tengah Digitalisasi Pembelajaran'
+  },
+  {
     id: 5,
-    src: '/sertifikat/Muhammad-Fikri-Idwebhost-Standar-Interface-Website-02-April-2026.jpg',
-    alt: 'Sertifikat Muhammad Fikri Webinar IDWebhost Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website',
-    name: 'Webinar Idwebstalks',
-    date: 'Kamis, 2 April 2026',
-    issuer: 'IDWebhost',
-    description: 'Stop Desain Ngasal, Yuk! Bongkar Standar Interface Website'
+    src: '/sertifikat/Muhammad-Fikri-Himatek-Design-Masterclass-26-Februari-2026.jpg',
+    alt: 'Sertifikat Webinar Nasional HIMATEK Muhammad Fikri',
+    name: 'Webinar Nasional HIMATEK',
+    date: 'Kamis, 26 Februari 2026',
+    issuer: 'HIMATEK',
+    description: 'kegiatan webinar nasional "Design Masterclass: Tips & Trik Desain yang Jarang Diketahui" yang diadakan oleh Himpunan Mahasiswa Teknologi Unversitas Slamet Riyadi pada tanggal 26 Februari 2026'
   },
   {
     id: 6,
@@ -101,12 +101,21 @@ export const certificateData = [
   },
   {
     id: 7,
-    src: '/sertifikat/Muhammad-Fikri-Idwebhost-Ai-Ads-Formula-30-April-2026.jpg',
-    alt: 'Certificate of Appreciation IDwebhost AI Ads Formula',
-    name: 'Webinar Idwebtalks',
-    date: 'Kamis, 30 April 2026',
-    issuer: 'IDwebhost',
-    description: 'AI Ads Formula: Optimasi Meta Ads Biar Lebih Profit'
+    src: '/sertifikat/Muhammad-Fikri-Metro-Press-Generasi-Fragile-27-April-2026.jpg',
+    alt: 'Sertifikat Webinar Nasional Generasi Fragile dalam Perspektif Pendidikan: Tantangan & Strategi Penguatan Resiliensi CV. Metro Press indonesia',
+    name: 'Webinar Nasional Metro Press',
+    date: 'Senin, 27 April 2026',
+    issuer: 'CV. METRO PRESS INDONESIA',
+    description: 'Generasi Fragile dalam Perspektif Pendidikan: Tantangan & Strategi Penguatan Resiliensi'
+  },
+  {
+    id: 8,
+    src: '/sertifikat/Muhammad-Fikri-Metro-Press-Urgensi-Ushul-Fiqih-13-April-2026.jpg',
+    alt: 'Sertifikat Webinar Nasional urgensi Ushul Fiqih Di zaman sekarang CV. Metro Press indonesia',
+    name: 'Webinar Nasional Metro Press',
+    date: 'Senin, 13 April 2026',
+    issuer: 'CV. METRO PRESS INDONESIA',
+    description: 'Webinar Nasional Urgensi Ushul Fiqih di zaman sekarang'
   }
 ]
 

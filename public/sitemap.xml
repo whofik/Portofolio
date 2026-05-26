@@ -36,9 +36,13 @@
   </url>
   <url>
     <loc>https://muhammadfikri.web.id/#certificates</loc>
-    <lastmod>2026-05-08</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Metro-Press-Humanizing-Technology-11-Mei-2026.png</image:loc>
+      <image:title>Sertifikat Webinar Nasional Metro Press Humanizing Technology Muhammad Fikri</image:title>
+    </image:image>
     <image:image>
       <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Himatek-Design-Masterclass-26-Februari-2026.jpg</image:loc>
       <image:title>Sertifikat Webinar Nasional HIMATEK Muhammad Fikri</image:title>
