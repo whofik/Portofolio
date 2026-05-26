@@ -109,3 +109,24 @@ export const certificateData = [
     description: 'AI Ads Formula: Optimasi Meta Ads Biar Lebih Profit'
   }
 ]
+
+export const locationData = {
+  photo: {
+    src: 'https://images.unsplash.com/photo-1555899434-94d1368aa7af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    alt: 'Jakarta Cityscape',
+  },
+  places: [
+    {
+      logo: '/logo/banten logo.svg',
+      logoAlt: 'Banten Logo',
+      city: 'Serang',
+      status: 'Lahir',
+    },
+    {
+      logo: '/logo/logo jakarta.svg',
+      logoAlt: 'Jakarta Logo',
+      city: 'DKI Jakarta',
+      status: 'Tinggal sekarang',
+    },
+  ],
+}

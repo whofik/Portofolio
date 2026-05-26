@@ -171,7 +171,6 @@ function SEO({ title, description, image, url }) {
       <meta name="geo.placename" content="Indonesia" />
       <meta name="geo.country" content="ID" />
       <meta name="ICBM" content="-6.2088, 106.8456" />
-      <meta name="theme-color" content="#0066ff" />
     </Helmet>
   )
 }
