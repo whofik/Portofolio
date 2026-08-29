@@ -42,8 +42,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
   opacity: 0;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.32s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity;
 }
 
 .certificate-item:hover .certificate-overlay {
@@ -52,8 +55,9 @@
 
 .certificate-overlay svg {
   color: #ffffff;
-  transform: scale(0.7);
-  transition: transform 0.25s ease;
+  transform: scale(0.78);
+  transition: transform 0.32s cubic-bezier(0.16,1,0.3,1);
+  will-change: transform;
 }
 
 .certificate-item:hover .certificate-overlay svg {
@@ -63,10 +67,15 @@
 .view-text {
   color: #ffffff;
   font-size: 0.85rem;
-  font-weight: 500;
-  transform: translateY(8px);
+  font-weight: 600;
+  transform: translateY(6px);
   opacity: 0;
-  transition: all 0.25s ease;
+  transition: transform 0.32s cubic-bezier(0.16,1,0.3,1), opacity 0.32s ease;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certificate-overlay, .certificate-overlay svg, .view-text, .certificate-item { transition: none !important; }
 }
 
 .certificate-item:hover .view-text {

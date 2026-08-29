@@ -9,12 +9,5 @@ createRoot(document.getElementById('root')).render(
   </StrictMode>,
 )
 
-document.addEventListener('contextmenu', (e) => {
-  e.preventDefault()
-})
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-    e.preventDefault()
-  }
-})
+// Best Practices: jangan blok contextmenu / F12 — merusak a11y, bfcache, dan agentic browsing (agents & screen readers butuh menu).
+// Jika perlu proteksi, gunakan watermark/CSP, bukan preventDefault.

@@ -135,8 +135,9 @@ function Projects() {
       <h2 className="section-title">Projects</h2>
 
       {loading ? (
-        <div className="projects-loading">
-          <div className="loading-spinner"></div>
+        <div className="projects-loading" role="status" aria-live="polite" aria-label="Loading projects">
+          <div className="loading-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span className="sr-only">Loading projects…</span>
         </div>
       ) : (
         <>

@@ -51,7 +51,7 @@ describe('Projects', () => {
   it('shows loading spinner initially', () => {
     vi.spyOn(globalThis, 'fetch').mockImplementation(() => new Promise(() => {}))
     renderProjects()
-    expect(document.querySelector('.loading-spinner')).toBeInTheDocument()
+    expect(document.querySelector('.loading-dots')).toBeInTheDocument()
   })
 
   it('has the projects section with correct id', () => {
@@ -104,7 +104,7 @@ describe('Projects', () => {
     renderProjects()
 
     await waitFor(() => {
-      expect(document.querySelector('.loading-spinner')).not.toBeInTheDocument()
+      expect(document.querySelector('.loading-dots')).not.toBeInTheDocument()
     }, { timeout: 5000 })
   }, 10000)
 

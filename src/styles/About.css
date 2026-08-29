@@ -70,12 +70,18 @@
   width: 2px;
   height: 1em;
   background: #0066ff;
-  animation: blink 1s step-end infinite;
+  animation: blink 1.1s ease-in-out infinite;
+  will-change: opacity;
 }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; opacity: 1; }
+  .profile-container .avatar { transition: none; }
 }
 
 @media (max-width: 768px) {

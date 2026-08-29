@@ -190,3 +190,7 @@
     min-height: 54px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .header, .nav, .menu-toggle span, .nav a { transition: none !important; }
+}
