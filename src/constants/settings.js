@@ -5,10 +5,10 @@
 
 export const siteUrl = 'https://muhammadfikri.web.id'
 export const siteName = 'Muhammad Fikri Portfolio'
-export const siteTitle = 'Muhammad Fikri - Portfolio | Pelajar Sekolah & Web Developer'
-export const siteDescription = 'Muhammad Fikri Portfolio - Pelajar Sekolah Indonesia yang tertarik di bidang IT dan Web Development. Menampilkan skills JavaScript, Python, React, dan berbagai project open source di GitHub.'
-export const siteImage = 'https://img2.pixhost.to/images/6703/708085391_image.jpg'
-export const siteKeywords = 'Muhammad Fikri Portfolio, Muhammad Fikri Pelajar, Muhammad Fikri Pelajar Sekolah, Muhammad Fikri Web Developer, Portfolio Muhammad Fikri, Fikri Portfolio, Fikri Developer, Web Developer Indonesia, Pelajar IT, Programmer Pemula, JavaScript, Python, React, Frontend Developer, Siswa IT Indonesia, Belajar Coding, Portfolio Pelajar, GitHub Developer Indonesia, Muhammad Fikri GitHub, Muhammad Fikri Programmer'
+export const siteTitle = 'Muhammad Fikri - Portfolio Pelajar & Web Developer Jakarta | React Vite Developer'
+export const siteDescription = 'Muhammad Fikri — Pelajar Sekolah Indonesia (Serang lahir, DKI Jakarta tinggal) & Web Developer. Portfolio React Vite 2026 menampilkan 6 skill terukur (JavaScript 68%, React 62%), 8 sertifikat nasional, dan 3 top project open-source GitHub whofik. Hire / kolaborasi frontend.'
+export const siteImage = 'https://muhammadfikri.web.id/og-image.jpg'
+export const siteKeywords = 'Muhammad Fikri, Muhammad Fikri Portfolio, Fikri Portfolio, whofik, Muhammad Fikri Web Developer, Web Developer Indonesia, Frontend Developer Indonesia, React Developer Indonesia, Vite Developer, Portfolio Pelajar Indonesia, Portofolio Pelajar Jakarta, Pelajar IT Indonesia, Siswa IT Jakarta, Programmer Pemula Indonesia, JavaScript Developer Indonesia, React Vite Portfolio, GitHub whofik, Open Source Indonesia, Web Developer Serang Banten, Web Developer Jakarta'
 
 export const author = {
   fullName: 'Muhammad Fikri',
@@ -36,12 +36,12 @@ export const githubUsername = 'whofik'
 export const buildDate = typeof __BUILD_DATE__ !== 'undefined' ? __BUILD_DATE__ : new Date().toISOString().split('T')[0]
 
 export const skillData = [
-  { name: 'JavaScript', percent: 30 },
-  { name: 'Python', percent: 5 },
-  { name: 'Scraping Website', percent: 56 },
-  { name: 'Vibe Code', percent: 100 },
-  { name: 'Yapping', percent: 100 },
-  { name: 'Turu', percent: 80 },
+  { name: 'JavaScript', percent: 68 },
+  { name: 'React', percent: 62 },
+  { name: 'Vite', percent: 60 },
+  { name: 'CSS', percent: 58 },
+  { name: 'Git/GitHub', percent: 55 },
+  { name: 'Python', percent: 35 },
 ]
 
 export const certificateData = [

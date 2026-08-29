@@ -226,12 +226,13 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  padding: 0.875rem 1rem;
+  padding: 0.9rem 1rem;
+  min-height: 88px;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #eaeaea;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s ease;
 }
 
 .project-card:hover {
@@ -318,7 +319,10 @@
 
   .contribution-graph {
     width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
   }
+  .graph-container { scroll-snap-type: x proximity; }
 }
 
 @media (max-width: 480px) {

@@ -13,14 +13,22 @@ const htmlPlugin = () => {
     <meta name="description" content="${settings.siteDescription}" data-rh="true" />
     <meta name="author" content="${settings.author.fullName}" data-rh="true" />
     <meta name="keywords" content="${settings.siteKeywords}" data-rh="true" />
+    <link rel="canonical" href="${settings.siteUrl}" data-rh="true" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" data-rh="true" />
+    <meta property="og:type" content="profile" data-rh="true" />
+    <meta property="og:url" content="${settings.siteUrl}" data-rh="true" />
     <meta property="og:title" content="${settings.siteTitle}" data-rh="true" />
     <meta property="og:description" content="${settings.siteDescription}" data-rh="true" />
     <meta property="og:image" content="${settings.siteImage}" data-rh="true" />
+    <meta property="og:image:width" content="1200" data-rh="true" />
+    <meta property="og:image:height" content="630" data-rh="true" />
     <meta property="og:image:alt" content="${settings.siteName}" data-rh="true" />
+    <meta property="og:locale" content="id_ID" data-rh="true" />
     <meta property="og:site_name" content="${settings.siteName}" data-rh="true" />
     <meta property="profile:first_name" content="${settings.author.firstName}" data-rh="true" />
     <meta property="profile:last_name" content="${settings.author.lastName}" data-rh="true" />
     <meta property="profile:username" content="${settings.author.username}" data-rh="true" />
+    <meta property="twitter:card" content="summary_large_image" data-rh="true" />
     <meta property="twitter:title" content="${settings.siteTitle}" data-rh="true" />
     <meta property="twitter:description" content="${settings.siteDescription}" data-rh="true" />
     <meta property="twitter:image" content="${settings.siteImage}" data-rh="true" />
@@ -40,10 +48,11 @@ export default defineConfig({
     react(), 
     htmlPlugin(),
     ViteImageOptimizer({
-      jpg: { quality: 80 },
-      jpeg: { quality: 80 },
-      png: { quality: 80 },
-      webp: { quality: 80 },
+      jpg: { quality: 72 },
+      jpeg: { quality: 72 },
+      png: { quality: 75 },
+      webp: { quality: 72 },
+      exclude: /avatar\.jpg$/,
     })
   ],
   define: {
@@ -51,6 +60,9 @@ export default defineConfig({
   },
   build: {
     target: 'es2020',
+    cssCodeSplit: true,
+    cssMinify: true,
+    assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
         manualChunks(id) {

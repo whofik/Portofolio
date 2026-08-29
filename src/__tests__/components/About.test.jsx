@@ -11,7 +11,7 @@ describe('About', () => {
 
   it('renders the status text', () => {
     render(<About />)
-    expect(screen.getByText(author.jobTitle)).toBeInTheDocument()
+    expect(screen.getByText(new RegExp(author.jobTitle))).toBeInTheDocument()
   })
 
   it('renders the avatar image', () => {

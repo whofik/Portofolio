@@ -16,18 +16,25 @@
 
 .skill-item {
   display: grid;
-  grid-template-columns: 100px 1fr 45px;
+  grid-template-columns: 110px 1fr 48px;
   align-items: center;
   gap: 1rem;
-  padding: 0.875rem 1.125rem;
+  padding: 0.9rem 1.15rem;
+  min-height: 56px;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #eaeaea;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .skill-item:hover {
-  transform: translateX(5px);
+  transform: translateX(4px);
+  border-color: #dbe6ff;
+  box-shadow: 0 4px 12px rgba(0,102,255,0.06);
+}
+
+@media (hover: none) {
+  .skill-item:hover { transform: none; box-shadow: none; }
 }
 
 .skill-name {

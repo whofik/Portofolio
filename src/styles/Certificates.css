@@ -5,7 +5,12 @@
 .certificates-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .certificates-grid { gap: 1.1rem; }
+  .certificate-item { border-radius: 12px; }
 }
 
 .certificate-item {
@@ -13,7 +18,7 @@
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #eaeaea;
-  transition: all 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease;
   cursor: pointer;
   position: relative;
 }
@@ -72,9 +77,11 @@
 .certificate-img {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 10;
   display: block;
   user-select: none;
   pointer-events: none;
+  background: #f2f2f2;
 }
 
 .modal-overlay {
@@ -89,7 +96,10 @@
   justify-content: center;
   z-index: 2000;
   padding: 1.5rem;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
   animation: modalFadeIn 0.2s ease;
+  overscroll-behavior: contain;
 }
 
 @keyframes modalFadeIn {
@@ -238,6 +248,7 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+  .certificate-item:active { transform: scale(0.98); }
 
   .modal-content {
     max-width: 100%;

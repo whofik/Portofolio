@@ -3,11 +3,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://muhammadfikri.web.id/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -15,30 +14,6 @@
       <image:title>Muhammad Fikri Portfolio</image:title>
       <image:caption>Profile Muhammad Fikri - Pelajar Sekolah dan Web Developer</image:caption>
     </image:image>
-  </url>
-  <url>
-    <loc>https://muhammadfikri.web.id/#about</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://muhammadfikri.web.id/#skills</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://muhammadfikri.web.id/#location</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://muhammadfikri.web.id/#certificates</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
     <image:image>
       <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Metro-Press-Humanizing-Technology-11-Mei-2026.png</image:loc>
       <image:title>Sertifikat Webinar Nasional Metro Press Humanizing Technology Muhammad Fikri</image:title>
@@ -71,23 +46,26 @@
       <image:loc>https://muhammadfikri.web.id/sertifikat/Muhammad-Fikri-Idwebhost-Ai-Ads-Formula-30-April-2026.jpg</image:loc>
       <image:title>Certificate of Appreciation IDwebhost AI Ads Formula</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/og-image.jpg</image:loc>
+      <image:title>Muhammad Fikri Portfolio OG Image</image:title>
+      <image:caption>OG 1200x630 self-host</image:caption>
+    </image:image>
   </url>
   <url>
-    <loc>https://muhammadfikri.web.id/#projects</loc>
-    <lastmod>2026-05-02</lastmod>
+    <loc>https://muhammadfikri.web.id/blog/react-vite-portfolio-performance-2026.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://muhammadfikri.web.id/og-image.jpg</image:loc>
+      <image:title>React Vite Performance 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://muhammadfikri.web.id/llms.txt</loc>
+    <lastmod>2026-05-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://muhammadfikri.web.id/#music</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://muhammadfikri.web.id/#contact</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
   </url>
 </urlset>

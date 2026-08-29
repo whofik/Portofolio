@@ -13,6 +13,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1.125rem 1.25rem;
+  min-height: 56px;
   background: #ffffff;
   border-radius: 8px;
   text-decoration: none;
@@ -20,9 +21,10 @@
   font-weight: 600;
   font-size: 1rem;
   border: 1px solid #eaeaea;
-  transition: all 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.25s ease, color 0.25s ease;
   position: relative;
   overflow: hidden;
+  touch-action: manipulation;
 }
 
 .contact-card::before {

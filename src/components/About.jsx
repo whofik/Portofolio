@@ -33,7 +33,8 @@ function About() {
         />
       </div>
       <h1 className="name">{author.fullName}</h1>
-      <p className="status">{author.jobTitle}</p>
+      <p className="status">{author.jobTitle} • Web Developer Jakarta</p>
+      <p className="sr-only">Portfolio Pelajar Indonesia — React Vite JavaScript Developer — Serang Banten & DKI Jakarta — GitHub whofik</p>
       <p className="bio" aria-live="polite">
         <span className="typing-text">{displayedtext}</span>
         <span className="cursor"></span>

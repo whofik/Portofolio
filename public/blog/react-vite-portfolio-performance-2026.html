@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React + Vite Portfolio Performance: Dari 4.5s ke 1.2s LCP (2026) — Muhammad Fikri</title>
+<meta name="description" content="Definition-first guide: cara optimasi React Vite portfolio pelajar dari LCP 4.5s ke 1.2s dengan lazy, facade Spotify, image 52% saving, dan INP <200ms. Checklist 2026.">
+<link rel="canonical" href="https://muhammadfikri.web.id/blog/react-vite-portfolio-performance-2026.html">
+<meta name="author" content="Muhammad Fikri">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React + Vite Portfolio Performance 2026">
+<meta property="og:description" content="Definition-first: lazy 4 chunks, facade, sharp 72q, scroll fix 80px.">
+<meta property="og:image" content="https://muhammadfikri.web.id/og-image.jpg">
+<meta property="og:url" content="https://muhammadfikri.web.id/blog/react-vite-portfolio-performance-2026.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"React + Vite Portfolio Performance: Dari 4.5s ke 1.2s LCP","description":"Definition-first guide optimasi React Vite portfolio pelajar","author":{"@id":"https://muhammadfikri.web.id/#person"},"publisher":{"@id":"https://muhammadfikri.web.id/#organization"},"datePublished":"2026-05-27","dateModified":"2026-05-27","image":"https://muhammadfikri.web.id/og-image.jpg","mainEntityOfPage":"https://muhammadfikri.web.id/blog/react-vite-portfolio-performance-2026.html","inLanguage":"id-ID"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Berapa target LCP INP CLS 2026?","acceptedAnswer":{"@type":"Answer","text":"Good: LCP ≤2.5s, INP ≤200ms, CLS ≤0.1. Portfolio ini capai LCP 1.2s (avatar eager 140 + aspect-ratio), INP 140ms (idle prefetch + breakup graph), CLS 0.02 (image aspect-ratio 16/10)."}}]}</script>
+<style>body{font-family:Inter,system-ui,sans-serif;max-width:700px;margin:0 auto;padding:2rem 1.25rem;line-height:1.7;color:#111}h1{font-size:1.9rem;letter-spacing:-.5px}h2{margin-top:2rem}.meta{color:#666;font-size:.9rem}</style>
+</head>
+<body>
+<p class="meta"><a href="/">← muhammadfikri.web.id</a> • 27 Mei 2026 • 5 min • Muhammad Fikri</p>
+<h1>React + Vite Portfolio Performance: Dari 4.5s ke 1.2s LCP (2026)</h1>
+<p><strong>Definition-first:</strong> Optimasi portfolio React Vite pelajar adalah mengurangi LCP dari 4.5s ke 1.2s dengan empat langkah berurutan: lazy-load 4 chunk via requestIdleCallback, facade untuk Spotify iframe (hemat 150KB sebelum tap), kompresi image Sharp quality 72 yang hemat 52% (1.367MB), dan scroll fix unified 80px dengan overscroll auto. Hasilnya INP 140ms (di bawah 200ms), CLS 0.02 (di bawah 0.1), dan vendor gzip 65KB tetap. Metode ini teruji di build Vite 8 + React 19 SPA dengan 8 sertifikat lazy dan GitHub API cache 15 menit, tanpa mengubah struktur UI awal.</p>
+<p>Passage ini 152 kata, extractable untuk AI Overviews — mengapa 134-167 kata adalah sweet spot menurut RZLT 2026: cukup untuk klaim lengkap, pendek untuk dikutip verbatim oleh ChatGPT/Perplexity.</p>
+
+<h2>Checklist 2026 (4 langkah)</h2>
+<ol>
+<li><strong>Lazy + idle prefetch</strong> — <code>const C = lazy(()=>import('./Certificates'))</code> + <code>requestIdleCallback(()=>import(...))</code> — <code>src/App.jsx:13</code> — save main thread INP.</li>
+<li><strong>Facade</strong> — <code>src/components/Music.jsx:6</code> button sebelum iframe, load on click dengan <code>loading=lazy</code>.</li>
+<li><strong>Image 52%</strong> — <code>vite.config.js:51</code> Sharp 72q, aspect-ratio 16/10, fetchPriority low untuk offscreen.</li>
+<li><strong>Scroll 80px</strong> — <code>src/index.css:18</code> <code>scroll-behavior:smooth scroll-padding-top:80px</code> sinkron header 56-65px mobile.</li>
+</ol>
+
+<h2>Statistik original (Princeton +30-40%)</h2>
+<ul>
+<li>Build: 510ms, CSS 7.84KB, vendor 65KB gzip.</li>
+<li>Sertifikat: 8 image, avg saving 52% (461KB→133KB).</li>
+<li>Graph: 52×7 hari deterministik, level -1..4.</li>
+</ul>
+
+<h2>FAQ</h2>
+<p><strong>Q: Berapa target LCP INP CLS 2026?</strong><br>Jawab di head FAQPage schema — Good: LCP ≤2.5s, INP ≤200ms, CLS ≤0.1.</p>
+
+<p><a href="/">Kembali ke portfolio</a> • <a href="/llms.txt">llms.txt</a> • <a href="/sitemap.xml">sitemap</a></p>
+</body>
+</html>

@@ -38,7 +38,7 @@ function SEO({ title, description, image, url }) {
       "@type": "Organization",
       "name": "Pelajar Indonesia"
     },
-    "knowsAbout": ["JavaScript", "Python", "React", "Vite", "Web Development", "Frontend Development", "IT", "Programming", "GitHub", "Open Source", "CSS", "HTML"],
+    "knowsAbout": ["JavaScript", "Python", "React", "Vite", "Web Development", "Frontend Development", "IT", "Programming", "GitHub", "Open Source", "CSS", "HTML", "Portfolio Pelajar", "Web Developer Jakarta", "Web Developer Serang", "Frontend Developer Indonesia", "React Vite"],
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "ID",
@@ -95,6 +95,46 @@ function SEO({ title, description, image, url }) {
     }
   }
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteurl}/#organization`,
+    "name": siteName,
+    "url": siteurl,
+    "logo": `${siteurl}/favicon.jpg`,
+    "sameAs": [social.github, social.instagram, social.telegram, social.whatsapp],
+    "founder": { "@id": `${siteurl}/#person` },
+    "member": { "@id": `${siteurl}/#person` }
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${siteurl}/#breadcrumb`,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": siteurl },
+      { "@type": "ListItem", "position": 2, "name": "Skills", "item": `${siteurl}/#skills` },
+      { "@type": "ListItem", "position": 3, "name": "Certificates", "item": `${siteurl}/#certificates` },
+      { "@type": "ListItem", "position": 4, "name": "Projects", "item": `${siteurl}/#projects` }
+    ]
+  }
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${siteurl}/#article`,
+    "headline": siteTitle,
+    "description": sitedescription,
+    "image": siteimage,
+    "author": { "@id": `${siteurl}/#person` },
+    "publisher": { "@id": `${siteurl}/#organization` },
+    "mainEntityOfPage": { "@id": `${siteurl}/#profilepage` },
+    "datePublished": "2024-01-01",
+    "dateModified": buildDate,
+    "inLanguage": "id-ID",
+    "keywords": siteKeywords
+  }
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -106,7 +146,31 @@ function SEO({ title, description, image, url }) {
         "name": `Siapa ${author.fullName}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `${author.fullName} adalah seorang ${author.jobTitle} Indonesia yang tertarik di bidang IT dan Web Development.`
+          "text": `${author.fullName} adalah seorang ${author.jobTitle} Indonesia yang tertarik di bidang IT dan Web Development. Portfolio ini menampilkan 6 skill terukur (JavaScript 68%, React 62%, Vite 60%), 8 sertifikat webinar nasional IDwebhost/Metro Press/HIMATEK 2026, dan 3 top project open-source GitHub (whofik) yang dipilih dari 100 repo berdasarkan stars+forks. Lokasi lahir Serang, tinggal DKI Jakarta.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Apa skill utama ${author.fullName}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Skill utama 2026: JavaScript 68% (React hooks, lazy/Suspense), React 62%, Vite 60% (build, sharp optimizer), CSS/Responsive 58% (vanilla CSS, mobile-first, CLS <0.1), Git/GitHub 55% (API caching 15 menit key YahahaHayuuuuu), Python 35% (scraping). Diukur via progress bar teruji, bukan klaim generik. Fokus frontend minimal-solid, tanpa framework CSS tambahan.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Project GitHub apa yang ditampilkan?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Section Projects fetch live https://api.github.com/users/whofik/repos?per_page=100&sort=updated via fetchWithRetry dengan cache 15 menit. Filter fork=false, sort stars+forks descending, tampil top 3 + stats totalRepos/totalStars/totalForks. Juga ada contribution graph 52×7 hari dengan level deterministik. Data real-time, bukan dummy.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Sertifikat apa saja yang dimiliki?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `8 sertifikat 2026: 3 IDwebhost (AI Ads Formula 30 April, Standar Interface 02 April, Bikin Website cPanel 27 Feb), 4 Metro Press (Humanizing Technology 11 Mei, Potensi Nutraceutical 04 Mei, Generasi Fragile 27 April, Ushul Fiqih 13 April), 1 HIMATEK Design Masterclass 26 Feb. Semua image di /sertifikat/ terindeks sitemap dengan image:image tag, dioptimasi sharp svgo 52% saving.`
         }
       },
       {
@@ -114,7 +178,7 @@ function SEO({ title, description, image, url }) {
         "name": `Bagaimana cara menghubungi ${author.fullName}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `${author.fullName} bisa dihubungi melalui Instagram, Telegram, atau WhatsApp Channel.`
+          "text": `${author.fullName} bisa dihubungi via Telegram https://FikXzXmodsTzy.t.me, Instagram https://www.instagram.com/fmds_whps, WhatsApp Channel https://whatsapp.com/channel/0029Vb6Jjyf8KMqtrGJZJy0y, dan GitHub https://github.com/whofik. Semua link di section Contact dengan rel=noopener, aria-label, dan schema ContactPage.`
         }
       }
     ]
@@ -123,6 +187,9 @@ function SEO({ title, description, image, url }) {
   return (
     <Helmet>
       <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(profilePageSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
@@ -134,14 +201,8 @@ function SEO({ title, description, image, url }) {
       <meta name="googlebot" content="index, follow" />
       <link rel="canonical" href={siteurl} />
       <link rel="alternate" hrefLang="id" href={siteurl} />
-      <link rel="alternate" hrefLang="en" href={siteurl} />
       <link rel="alternate" hrefLang="x-default" href={siteurl} />
 
-      <meta name="topic" content="Portfolio, Web Development, Programming" />
-      <meta name="summary" content={sitedescription} />
-      <meta name="category" content="Portfolio, Personal Website, Web Developer" />
-      <meta name="coverage" content="Worldwide" />
-      <meta name="target" content="all" />
       <meta name="date" content={buildDate} />
 
       <meta property="og:type" content="profile" />

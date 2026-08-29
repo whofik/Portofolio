@@ -15,8 +15,28 @@
   display: block;
 }
 
+.spotify-facade {
+  width: 100%;
+  height: 152px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  touch-action: manipulation;
+  transition: opacity 0.2s ease;
+}
+
+.spotify-facade:active { opacity: 0.9; }
+.spotify-facade-art { filter: drop-shadow(0 4px 12px rgba(29,185,84,0.3)); }
+.spotify-facade-title { font-size: 0.95rem; font-weight: 700; letter-spacing: -0.3px; }
+.spotify-facade-cta { font-size: 0.8rem; font-weight: 600; color: #1DB954; background: #fff; padding: 0.3rem 0.9rem; border-radius: 999px; }
+
 @media (max-width: 768px) {
-  .spotify-card {
-    border-radius: 10px;
-  }
+  .spotify-card { border-radius: 10px; }
+  .spotify-facade { height: 160px; }
 }

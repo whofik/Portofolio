@@ -22,10 +22,10 @@ describe('Certificates', () => {
     expect(document.getElementById('certificates')).toBeInTheDocument()
   })
 
-  it('renders all 7 certificate cards', () => {
+  it('renders all 8 certificate cards', () => {
     renderCertificates()
     const cards = document.querySelectorAll('.certificate-item')
-    expect(cards.length).toBe(7)
+    expect(cards.length).toBe(8)
   })
 
   it('renders certificate images with lazy loading', () => {
@@ -89,9 +89,10 @@ describe('Certificates', () => {
     const firstCard = document.querySelector('.certificate-item')
     fireEvent.click(firstCard)
 
-    expect(screen.getByText('Webinar Nasional HIMATEK')).toBeInTheDocument()
-    expect(screen.getByText('Kamis, 26 Februari 2026')).toBeInTheDocument()
-    expect(screen.getByText('HIMATEK')).toBeInTheDocument()
+    // first cert is Idwebhost Ai Ads Formula (settings.js order)
+    expect(screen.getByText('Webinar Idwebtalks')).toBeInTheDocument()
+    expect(screen.getByText('Kamis, 30 April 2026')).toBeInTheDocument()
+    expect(screen.getByText('IDwebhost')).toBeInTheDocument()
   })
 
   it('injects JSON-LD schema for certificates', () => {

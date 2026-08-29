@@ -14,6 +14,10 @@ function Location() {
             className="location-photo"
             loading="lazy"
             decoding="async"
+            fetchPriority="low"
+            width="800"
+            height="450"
+            sizes="(max-width: 600px) 100vw, 50vw"
           />
         </div>
 

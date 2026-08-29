@@ -83,6 +83,8 @@ function Certificates() {
               height="200"
               loading="lazy"
               decoding="async"
+              fetchPriority="low"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div className="certificate-overlay">
               <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
